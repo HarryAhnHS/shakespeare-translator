@@ -101,9 +101,28 @@ function Translator() {
                         <span>Word Count: {wordCount}</span>
                         <span className="ml-1 text-red-700">(Max 1000)</span>
                     </div>
-                    <div className="flex justify-center items-center mt-8 text-black">
-                        <div className="text-center text-sm">
-                            <span>Developed by <a href="https://github.com/HarryAhnHS" target="_blank" className="font-semibold hover:text-indigo-400">@HarryAhnHS</a></span>
+                    <div className="flex flex-col justify-between items-center mt-8 text-black text-sm space-y-4 md:space-y-0">
+                        {/* Developer Information */}
+                        <div className="text-center">
+                            <div>
+                                Developed by{" "}
+                                <a 
+                                    href="https://github.com/HarryAhnHS" 
+                                    target="_blank" 
+                                    className="font-semibold hover:text-indigo-400">
+                                    @HarryAhnHS
+                                </a>
+                            </div>
+
+                            <div>
+                                with{" "}
+                                <a 
+                                    href="https://catalogue.usc.edu/preview_course_nopop.php?catoid=12&coid=179276" 
+                                    target="_blank" 
+                                    className="italic hover:text-indigo-400">
+                                    ENGL230 - Shakespeare and His Times
+                                </a>    
+                            </div>
                         </div>
                     </div>
                 </div>
