@@ -43,7 +43,7 @@ function Toolbar({ output, onCopy, onReset,onTranslate, onRandomQuote }) {
               <div className="relative group">
                   <button
                       onClick={onTranslate}
-                      className="flex items-center h-10 px-4 text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 focus:outline-none"
+                      className="flex items-center h-10 px-4 text-white bg-indigo-900 rounded-lg hover:bg-indigo-950 focus:ring-4 focus:ring-indigo-300 focus:outline-none"
                   >
                       <span className="mr-2">Translate</span>
                       <FontAwesomeIcon icon={faRightLong} />

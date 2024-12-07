@@ -72,7 +72,7 @@ function Fortune() {
                 onClick={() => {setIsModalOpen(true)}}
                 whileHover={{ scale: 1.15 }}
                 whileTap={{ scale: 0.9 }}
-                className="text-sm relative flex items-center justify-center w-10 h-10 bg-indigo-600 rounded-lg hover:bg-indigo-800 focus:outline-none"
+                className="text-sm relative flex items-center justify-center w-10 h-10 bg-indigo-900 rounded-lg hover:bg-indigo-950 focus:outline-none"
             >
                 {/* Icon Animation */}
                 <motion.div
