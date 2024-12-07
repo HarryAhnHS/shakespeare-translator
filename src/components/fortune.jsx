@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHatWizard } from "@fortawesome/free-solid-svg-icons";
+import { faHatWizard, faXmark } from "@fortawesome/free-solid-svg-icons";
 import fortunes from "../models/fortunes.json";
 import witchQuotes from "../models/witchQuotes.json";
+import witchIcon from '../assets/witch.png';
 
 function Fortune() {
     const [fortune, setFortune] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [name, setName] = useState(null);
 
     const [isTextVisible, setIsTextVisible] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);  // State to control animation
@@ -64,27 +66,32 @@ function Fortune() {
     };
 
     return (
-        <div className="absolute right-3 top-3 flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center text-sm md:text-lg">
             {/* Animated Button */}
             <motion.button
                 onClick={() => {setIsModalOpen(true)}}
-                whileHover={{ scale: 1.1 }}
+                whileHover={{ scale: 1.15 }}
                 whileTap={{ scale: 0.9 }}
-                className="relative flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full border border-gray-300 hover:bg-gray-200 focus:outline-none"
+                className="text-sm relative flex items-center justify-center w-10 h-10 bg-indigo-600 rounded-full hover:bg-indigo-800 focus:outline-none"
             >
                 {/* Icon Animation */}
                 <motion.div
                     animate={{
                         rotate: isAnimating ? [0, -15, 15, -10, 10, -9, 9, -8, 8, -5, 5, 3, -3, 2, -2, 1, -1, 0] : 0,  // Wiggle animation when active
-                        color: isAnimating ? ["#6366F1"] : "#4B5563",  // Color change during animation
+                        color: isAnimating ? "#f6f456" : "#FFFFFF",  // Wiggle animation when active
                     }}
                     transition={{
-                        repeat: 1,  // Set repeat to 1 to prevent extra flashes
-                        repeatType: "reverse",  // Ensure the animation reverses after the cycle
-                        duration: 1.5,  // 1.5 seconds duration for the animation cycle
+                        rotate: {
+                            repeat: 1,  // Set repeat to 1 to prevent extra flashes
+                            repeatType: "reverse",  // Ensure the animation reverses after the cycle
+                            duration: 1.5,  // 1.5 seconds duration for the animation cycle
+                        },
+                        color: {
+                            duration: 0.25
+                        }
                     }}
                     >
-                    <FontAwesomeIcon icon={faHatWizard} className="text-lg" />
+                    <FontAwesomeIcon icon={faHatWizard} />
                 </motion.div>
 
 
@@ -97,16 +104,16 @@ function Fortune() {
                     }}
                     transition={{
                         opacity: { 
-                            duration: 0.25
+                            duration: 0.5
                         },
                         y: { 
-                            duration: 0.25
+                            duration: 0.5
                         },
                     }}
-                    className="absolute bottom-11 w-auto px-4"
+                    className="absolute bottom-9 w-auto px-4"
                 >
                     <div className="relative">
-                        <span className="block text-xs text-indigo-600 whitespace-nowrap">
+                        <span className="block text-[9px] font-bold text-indigo-600 whitespace-nowrap">
                             {witchQuote}
                         </span>
                     </div>
@@ -127,13 +134,19 @@ function Fortune() {
                             animate={{ scale: 1 }}
                             exit={{ scale: 0.8 }}
                             transition={{ type: "spring", stiffness: 300 }}
-                            className="relative bg-white p-6 rounded-lg shadow-lg w-full max-w-md"
+                            className="relative bg-white p-6 rounded-lg shadow-lg w-full max-w-md py-12"
                         >
+                            <button
+                                onClick={() => setIsModalOpen(false)}
+                                className="z-50 absolute top-3 right-3 h-8 px-2 flex items-center justify-center text-gray-700 bg-gray-100 rounded-lg border border-gray-300 hover:bg-gray-200"
+                            >
+                                <FontAwesomeIcon icon={faXmark} />
+                            </button>
+
                             {/* Witch Icon Background */}
-                            <div className="absolute inset-0 opacity-10">
+                            <div className="absolute inset-0 opacity-[0.08]">
                                 <img
-                                    src="../assets/witch.png"
-                                    alt="Witch Icon"
+                                    src= {witchIcon}
                                     className="w-full h-full object-contain"
                                 />
                             </div>
@@ -147,7 +160,11 @@ function Fortune() {
                                     <input
                                         type="text"
                                         placeholder="Enter your name"
+                                        value={name}
                                         className="w-full h-10 px-4 mb-4 text-gray-700 bg-gray-100 rounded-lg border border-gray-300 focus:ring-4 focus:ring-indigo-300 focus:outline-none"
+                                        onChange={(e) => {
+                                            setName(e.target.value);
+                                        }}
                                         onKeyDown={(e) => {
                                             if (e.key === "Enter") handleGenerateFortune(e.target.value);
                                         }}
@@ -155,25 +172,28 @@ function Fortune() {
                                 )}
                                 {fortune && (
                                     <div>
-                                        <p className="text-lg italic text-gray-800 mb-2">&quot;{fortune.quote}&quot;</p>
-                                        <p className="text-sm text-gray-500">- {fortune.play}</p>
+                                        <p className="text-lg italic font-bold text-gray-800 mb-2">&quot;{fortune.quote}&quot;</p>
+                                        <p className="text-right text-sm text-gray-500">- {fortune.play}</p>
                                     </div>
                                 )}
-                                <div className="flex justify-between mt-4">
-                                    <button
-                                        onClick={() => setIsModalOpen(false)}
-                                        className="flex justify-center items-center h-10 px-4 text-gray-700 bg-gray-100 rounded-lg border border-gray-300 hover:bg-gray-200 focus:ring-4 focus:ring-red-300 focus:outline-none"
-                                    >
-                                        Close
-                                    </button>
-                                    {fortune && (
+                                <div className="flex justify-between mt-8">
+                                    {fortune ? 
                                         <button
                                             onClick={() => setFortune(null)}
                                             className="flex justify-center items-center h-10 px-4 text-gray-700 bg-gray-100 rounded-lg border border-gray-300 hover:bg-gray-200 focus:ring-4 focus:ring-red-300 focus:outline-none"
                                         >
                                             Try Again
                                         </button>
-                                    )}
+                                        :
+                                        <button
+                                            onClick={() => {
+                                                if (name) handleGenerateFortune(name);
+                                            }}
+                                            className="flex justify-center items-center h-10 px-4 text-gray-100 bg-indigo-600 rounded-lg border border-indigo-300 hover:bg-indigo-700 focus:outline-none"
+                                        >
+                                            Get Prophecy
+                                        </button>
+                                    }
                                 </div>
                             </div>
                         </motion.div>

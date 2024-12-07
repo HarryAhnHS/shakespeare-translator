@@ -32,6 +32,7 @@ function Translator() {
                 method: "GET",
                 headers: {
                     "Accept": "application/json",
+                    "X-Funtranslations-Api-Secret": import.meta.env.VITE_TRANSLATION_API_KEY
                 },
             });
 
@@ -90,7 +91,7 @@ function Translator() {
     return (
         <>
             <div className="w-full h-full">
-                <div className="h-full flex flex-col px-8 md:px-12">
+                <div className="relative h-full flex flex-col px-8 md:px-12">
                     <Head />
                     <Toolbar output={output} onTranslate={onTranslate} onReset={onReset} onCopy={onCopy} onRandomQuote={onRandomQuote} loading={loading}/>
                     <div className="flex-1 flex flex-col md:flex-row justify-center gap-8 md:gap-4 my-2">
@@ -99,17 +100,17 @@ function Translator() {
                     </div>
                     <div className="text-xs text-gray-600">
                         <span>Word Count: {wordCount}</span>
-                        <span className="ml-1 text-red-700">(Max 1000)</span>
+                        <span className="ml-1 text-indigo-600">(Max 1000)</span>
                     </div>
-                    <div className="flex flex-col justify-between items-center mt-8 text-black text-sm space-y-4 md:space-y-0">
+                    <div className="flex flex-col justify-between items-center mt-10 text-black text-sm space-y-4 md:space-y-0">
                         {/* Developer Information */}
-                        <div className="text-center">
+                        <div className="text-center text-xs">
                             <div>
                                 Developed by{" "}
                                 <a 
                                     href="https://github.com/HarryAhnHS" 
                                     target="_blank" 
-                                    className="font-semibold hover:text-indigo-400">
+                                    className="font-semibold hover:text-indigo-400 underline">
                                     @HarryAhnHS
                                 </a>
                             </div>
@@ -119,7 +120,7 @@ function Translator() {
                                 <a 
                                     href="https://catalogue.usc.edu/preview_course_nopop.php?catoid=12&coid=179276" 
                                     target="_blank" 
-                                    className="italic hover:text-indigo-400">
+                                    className="italic hover:text-indigo-400 underline">
                                     ENGL230 - Shakespeare and His Times
                                 </a>    
                             </div>
