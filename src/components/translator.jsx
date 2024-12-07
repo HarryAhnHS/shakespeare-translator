@@ -94,7 +94,7 @@ function Translator() {
                 <div className="relative h-full flex flex-col px-8 md:px-12">
                     <Head />
                     <Toolbar output={output} onTranslate={onTranslate} onReset={onReset} onCopy={onCopy} onRandomQuote={onRandomQuote} loading={loading}/>
-                    <div className="flex-1 flex flex-col md:flex-row justify-center gap-8 md:gap-4 my-2">
+                    <div className="flex-1 flex flex-col md:flex-row justify-center gap-8 md:gap-4 my-6 md:my-4">
                         <Input input={input} setInput={setInput} setWordCount={setWordCount} loading={loading}/>
                         <Output output={output} loading={loading}/>
                     </div>

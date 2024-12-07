@@ -72,7 +72,7 @@ function Fortune() {
                 onClick={() => {setIsModalOpen(true)}}
                 whileHover={{ scale: 1.15 }}
                 whileTap={{ scale: 0.9 }}
-                className="text-sm relative flex items-center justify-center w-10 h-10 bg-indigo-600 rounded-full hover:bg-indigo-800 focus:outline-none"
+                className="text-sm relative flex items-center justify-center w-10 h-10 bg-indigo-600 rounded-lg hover:bg-indigo-800 focus:outline-none"
             >
                 {/* Icon Animation */}
                 <motion.div
@@ -110,7 +110,7 @@ function Fortune() {
                             duration: 0.5
                         },
                     }}
-                    className="absolute bottom-9 w-auto px-4"
+                    className="absolute bottom-10 w-auto px-4"
                 >
                     <div className="relative">
                         <span className="block text-[9px] font-bold text-indigo-600 whitespace-nowrap">
@@ -176,7 +176,7 @@ function Fortune() {
                                         <p className="text-right text-sm text-gray-500">- {fortune.play}</p>
                                     </div>
                                 )}
-                                <div className="flex justify-between mt-8">
+                                <div className="flex justify-between mt-8 text-base">
                                     {fortune ? 
                                         <button
                                             onClick={() => setFortune(null)}
