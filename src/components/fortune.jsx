@@ -24,6 +24,7 @@ function Fortune() {
     useEffect(() => {
         // Start the cycle on component mount
         const cycleAnimation = () => {
+            randomizeWitchQuote();
             setIsAnimating(true);
             setIsTextVisible(true); // Show text during the animation phase
 
