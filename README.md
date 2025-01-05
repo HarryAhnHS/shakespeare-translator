@@ -1,8 +1,14 @@
-# React + Vite
+# Shakespeare Translator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The Shakespeare Translator is a web application that translates modern English phrases into Shakespearean-style language. This tool is designed for enthusiasts of Shakespeare and anyone curious about Elizabethan English.
 
-Currently, two official plugins are available:
+## Features
+- Translate modern English into Shakespearean English.
+- User-friendly and responsive design.
+- Accessible via a live demo.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Live Demo
+Explore the Shakespeare Translator online: [Shakespeare Translator](https://shakespeare-translate-tool.netlify.app/)
+
+## Credits
+- FunTranslations API - https://funtranslations.com/api/shakespeare
